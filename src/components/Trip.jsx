@@ -9,6 +9,7 @@ import { useTheme } from "./ThemeContext";
 }
 const validationSchema = Yup.object().shape({
   name: Yup.string().required("Name is required"),
+  phone: Yup.string().required("Phone is required"),
   email: Yup.string().email("Invalid email").required("Email is required"),
   terms: Yup.boolean().oneOf([true], "Please accept the terms and conditions"),
 });
@@ -17,6 +18,7 @@ const MyForm = () => {
   const initialValues = {
     name: "",
     email: "",
+    phone: "",
     terms: false,
   };
 
@@ -35,6 +37,7 @@ const MyForm = () => {
         onSubmit={onSubmit}
       >
         <Form>
+          <h1>Patient Information</h1>
           <div className="flex items-center mb-4">
             <label
               htmlFor="name"
@@ -42,7 +45,7 @@ const MyForm = () => {
                 isDarkTheme ? "text-white" : "text-gray-600"
               }`}
             >
-              Patient Name
+              Patient Name:
             </label>
             <Field
               type="text"
@@ -62,6 +65,37 @@ const MyForm = () => {
             </button>
             <ErrorMessage
               name="name"
+              component="div"
+              className="w-32 ml-1 text-sm text-red-500"
+            />
+          </div>
+          <div className="flex items-center mb-4">
+            <label
+              htmlFor="name"
+              className={`block w-24 text-sm font-medium  ${
+                isDarkTheme ? "text-white" : "text-gray-600"
+              }`}
+            >
+              Patient Phone No:
+            </label>
+            <Field
+              type="text"
+              id="phone"
+              name="phone"
+              className="w-[80%] p-2 mt-1 border rounded-md"
+            />
+            <button
+              type="button"
+              onClick={() => {
+                // Handle button click logic here
+                console.log("Button clicked");
+              }}
+              className="p-2 ml-2 text-white bg-blue-500 rounded-md hover:bg-blue-600"
+            >
+              <ArrowBigLeft />
+            </button>
+            <ErrorMessage
+              name="phone"
               component="div"
               className="w-32 ml-1 text-sm text-red-500"
             />
