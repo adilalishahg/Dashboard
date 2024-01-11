@@ -68,7 +68,7 @@ const NavigationBar = () => {
                   isActive
                     ? !isDarkTheme
                       ? "bg-[#f19898] text-black"
-                      : "bg-[#9af7a1] text-white font-semibold"
+                      : "bg-[#9af7a1] text-black font-bold"
                     : ""
                 } `
               }
