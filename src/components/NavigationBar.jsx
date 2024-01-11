@@ -31,11 +31,13 @@ const NavigationBar = () => {
       variants={variants}
       className={`flex flex-col w-1/5 h-screen ${
         isExpanded ? " px-10" : " px-12 items-center"
-      } py-12 border  border-r-1 relative`}
+      } py-10 border  border-r-1 relative`}
     >
       <div className="flex items-center space-x-3 logo-div">
-        <img style={{ maxWidth: "6rem" }} src={Logo} className="mr-3 w-12" />
-        <span className={isExpanded ? "block" : "hidden"}>Money Tracker</span>
+        <img style={{ maxWidth: "6rem" }} src={Logo} className=" w-12" />
+        <span className={`font-bold ${isExpanded ? "block" : "hidden"}`}>
+          Money Tracker
+        </span>
       </div>
       <div
         onClick={() => setIsExpanded((isExpanded) => !isExpanded)}
