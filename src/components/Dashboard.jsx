@@ -1,9 +1,8 @@
-import React from "react";
 import Chart from "./Chart";
 
 const Dashboard = () => {
   return (
-    <div className="flex flex-col py-12 px-14 space-y-4">
+    <>
       <h2 className="font-bold">Dashboard</h2>
       <div className="flex space-x-8">
         <div className="w-2/5 h-[9.5rem] border  flex flex-col justify-center p-4   text-gray-600">
@@ -37,7 +36,7 @@ const Dashboard = () => {
           </div>
         </div>
       </div>
-    </div>
+    </>
   );
 };
 
