@@ -17,8 +17,8 @@ const MainRoot = () => {
 
       {/* Main Components */}
       <main className="grow">
-        <div className="flex flex-col px-14 py-4 space-y-4 justify-end items-end ">
-          <span className="rounded-full flex items-center space-x-3">
+        <div className="flex flex-col items-end justify-end py-4 space-y-4 px-14 ">
+          <span className="flex items-center space-x-3 rounded-full">
             <button onClick={toggleTheme}>
               {isDarkTheme ? (
                 <Sun size={28} strokeWidth={1} absoluteStrokeWidth />
@@ -29,7 +29,7 @@ const MainRoot = () => {
             <LogOut size={28} strokeWidth={1} absoluteStrokeWidth />
           </span>
         </div>
-        <div className="flex flex-col py-12 px-14 space-y-4">
+        <div className="flex flex-col py-12 space-y-4 px-14">
           <Outlet />
         </div>
       </main>
