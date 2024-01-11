@@ -8,6 +8,7 @@ import {
   ArrowRightLeft,
   HelpCircle,
   ChevronRight,
+  ChevronLeft,
 } from "lucide-react";
 const navLinks = [
   { name: "Dashboard", icon: LayoutDashboard, path: "/" },
@@ -40,7 +41,11 @@ const NavigationBar = () => {
         onClick={() => setIsExpanded((isExpanded) => !isExpanded)}
         className="w-5 h-5 bg-[#f19898] rounded-full absolute -right-[0.70rem] top-20 flex items-center justify-center"
       >
-        <ChevronRight className="text-white" />
+        {isExpanded ? (
+          <ChevronLeft className="text-white mr-[0.1rem]" />
+        ) : (
+          <ChevronRight className="text-white" />
+        )}
       </div>
       <div className={`flex flex-col mt-10 space-y-8`}>
         {navLinks &&
