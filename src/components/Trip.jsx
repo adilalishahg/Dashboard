@@ -30,15 +30,17 @@ const MyForm = () => {
   const { isDarkTheme } = useTheme();
   return (
     <>
-      <h2 className="mb-4 text-2xl font-semibold">Add Trip</h2>
+      <h2 className="text-2xl font-semibold">Add Trip</h2>
       <Formik
         initialValues={initialValues}
         validationSchema={validationSchema}
         onSubmit={onSubmit}
       >
         <Form>
-          <h1>Patient Information</h1>
-          <div className="flex items-center mb-4">
+          <h1 className="mt-2 mb-4 text-xl font-semibold">
+            Patient Information
+          </h1>
+          <div className="flex items-center mb-2">
             <label
               htmlFor="name"
               className={`block w-24 text-sm font-medium  ${
@@ -69,7 +71,7 @@ const MyForm = () => {
               className="w-32 ml-1 text-sm text-red-500"
             />
           </div>
-          <div className="flex items-center mb-4">
+          <div className="flex items-center mb-2">
             <label
               htmlFor="name"
               className={`block w-24 text-sm font-medium  ${
@@ -100,7 +102,7 @@ const MyForm = () => {
               className="w-32 ml-1 text-sm text-red-500"
             />
           </div>
-          <div className="flex items-center mb-4">
+          <div className="flex items-center mb-2">
             <label
               htmlFor="name"
               className={`block w-24 text-sm font-medium ${
@@ -123,8 +125,8 @@ const MyForm = () => {
             />
           </div>
 
-          <div className="mb-4">
-            <label className="flex items-center">
+          <div className="mt-2 mb-4">
+            <label className="flex items-center justify-end ">
               <Field
                 type="checkbox"
                 id="terms"
