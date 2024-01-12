@@ -11,12 +11,16 @@ const MainRoot = () => {
   const { isDarkTheme, toggleTheme } = useTheme();
 
   return (
-    <div className={`w-full flex ${isDarkTheme ? "darkTheme" : "lightTheme"}`}>
+    <div
+      className={`w-full h-full flex ${
+        isDarkTheme ? "darkTheme" : "lightTheme"
+      }`}
+    >
       {/* Navigation Bar */}
       <NavigationBar />
 
       {/* Main Components */}
-      <main className="grow">
+      <main className="border-l grow">
         <div className="flex flex-col items-end justify-end py-4 space-y-4 px-14 ">
           <span className="flex items-center space-x-3 rounded-full">
             <button onClick={toggleTheme}>
@@ -29,7 +33,7 @@ const MainRoot = () => {
             <LogOut size={28} strokeWidth={1} absoluteStrokeWidth />
           </span>
         </div>
-        <div className="flex flex-col py-12 space-y-4 px-14">
+        <div className="flex flex-col pb-12 space-y-4 px-14">
           <Outlet />
         </div>
       </main>

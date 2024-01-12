@@ -1,8 +1,9 @@
-import React from "react";
-import { Formik, Field, Form, ErrorMessage } from "formik";
+import { Formik, Field, Form, ErrorMessage, useFormikContext } from "formik";
 import * as Yup from "yup";
 import { ArrowBigLeft } from "lucide-react";
 import { useTheme } from "./ThemeContext";
+import axios from "axios";
+import Button from "./Button";
 
 {
   /* <ArrowBigLeft /> */
@@ -13,13 +14,31 @@ const validationSchema = Yup.object().shape({
   email: Yup.string().email("Invalid email").required("Email is required"),
   terms: Yup.boolean().oneOf([true], "Please accept the terms and conditions"),
 });
-
+const initialValues = {
+  name: "",
+  email: "",
+  phone: "",
+  terms: false,
+};
 const MyForm = () => {
-  const initialValues = {
-    name: "",
-    email: "",
-    phone: "",
-    terms: false,
+  const formik = useFormikContext();
+
+  const fetchPatient = async () => {
+    try {
+      const response = await axios.get(
+        "https://pokeapi.co/api/v2/pokemon/ditto"
+      );
+      console.log(response);
+
+      // Check if formik is defined before calling setFieldValue
+      if (formik) {
+        formik.setFieldValue("name", response.data.name);
+      } else {
+        console.error("formik is undefined");
+      }
+    } catch (error) {
+      console.error("Error fetching form data:", error);
+    }
   };
 
   const onSubmit = (values, { setSubmitting }) => {
@@ -55,16 +74,21 @@ const MyForm = () => {
               name="name"
               className="w-[80%] p-2 mt-1 border rounded-md"
             />
-            <button
+            {/* <button
               type="button"
-              onClick={() => {
-                // Handle button click logic here
-                console.log("Button clicked");
-              }}
-              className="p-2 ml-2 text-white bg-blue-500 rounded-md hover:bg-blue-600"
+              onClick={fetchPatient}
+              className={`p-2 ml-2 ${
+                isDarkTheme
+                  ? "text-black bg-[#9af7a1]"
+                  : "text-white bg-blue-500 hover:bg-blue-600"
+              }    rounded-md `}
             >
               <ArrowBigLeft />
-            </button>
+            </button> */}
+            <Button type="button" onClick={fetchPatient}>
+              {" "}
+              <ArrowBigLeft />
+            </Button>
             <ErrorMessage
               name="name"
               component="div"
@@ -86,16 +110,29 @@ const MyForm = () => {
               name="phone"
               className="w-[80%] p-2 mt-1 border rounded-md"
             />
-            <button
+            {/* <button
               type="button"
               onClick={() => {
                 // Handle button click logic here
                 console.log("Button clicked");
               }}
-              className="p-2 ml-2 text-white bg-blue-500 rounded-md hover:bg-blue-600"
+              className={`p-2 ml-2 ${
+                isDarkTheme
+                  ? "text-black bg-[#9af7a1]"
+                  : "text-white bg-blue-500 hover:bg-blue-600"
+              }    rounded-md `}
             >
               <ArrowBigLeft />
-            </button>
+            </button> */}
+            <Button
+              type="button"
+              onClick={() => {
+                console.log("Button clicked");
+              }}
+            >
+              {" "}
+              <ArrowBigLeft />
+            </Button>
             <ErrorMessage
               name="phone"
               component="div"
@@ -145,12 +182,17 @@ const MyForm = () => {
           </div>
 
           <div>
-            <button
+            {/* <button
               type="submit"
-              className="p-2 text-white bg-blue-500 rounded-md hover:bg-blue-600"
+              className={`p-2 ml-2 ${
+                isDarkTheme
+                  ? "text-black bg-[#9af7a1]"
+                  : "text-white bg-blue-500 hover:bg-blue-600"
+              }    rounded-md text-bold`}
             >
               Submit
-            </button>
+            </button> */}
+            <Button type="submit">Submit</Button>
           </div>
         </Form>
       </Formik>
